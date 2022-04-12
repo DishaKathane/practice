@@ -16,7 +16,10 @@ const bookSchema = new mongoose.Schema(
       type: String,
       enum: ["tech", "motivation", "fantacy"],
     },
-    year: Number,
+    date: {
+      type: Date,
+      default: Date.now
+    }
   },
   { timestamps: true }
 );
