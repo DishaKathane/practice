@@ -11,8 +11,8 @@ router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
 })
 
-router.post("/createUser", authorController.createUser  )
+router.post("/authors", authorController.createUser  )
 
-router.get("/getUsersData", authorController.getUsersData)
+router.post("/blogs", blogController.createBlog)
 
 module.exports = router;

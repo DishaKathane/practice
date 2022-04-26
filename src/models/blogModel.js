@@ -1,5 +1,11 @@
 const mongoose = require("mongoose")
 const objectId = mongoose.Schema.Types.ObjectId
+const moment = require("moment")
+
+
+let date = moment().format('DD/MM/YYYY');
+console.log(date)
+
 const blogSchema = new mongoose.Schema({
 
     "title": {
@@ -10,7 +16,7 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    "authorid": {
+    "authorId": {
         type: objectId, ref: "author"
     },
     "tags": [String],
@@ -29,7 +35,10 @@ const blogSchema = new mongoose.Schema({
         default: false
     },
     "deletedAt": Date, // if deleted is true deletedAt will have a date 2021-09-17T04:25:07.803Z,
-
+     date:{
+         type:String,
+         default:date
+     }
 
 }, { timestamps: true })
 
