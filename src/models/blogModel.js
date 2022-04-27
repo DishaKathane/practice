@@ -6,6 +6,7 @@ const moment = require("moment")
 let date = moment().format('DD/MM/YYYY');
 console.log(date)
 
+
 const blogSchema = new mongoose.Schema({
 
     "title": {
@@ -19,17 +20,20 @@ const blogSchema = new mongoose.Schema({
     "authorId": {
         type: objectId, ref: "author"
     },
-    "tags": [String],
+    "tags": [{type:String,trim:true}],
     "category": {
         type: String,
         required: true
     },
-    "subcategory": [String],
+    "subcategory": [{type:String}],
     "isPublished": {
         type: Boolean,
         default: false
     },
-    "publishedAt": Date, // if published is true publishedAt will have a date 2021-09-17T04:25:07.803Z
+    "publishedAt":Date,
+        // type:String,
+        //  default:date
+     // if published is true publishedAt will have a date 2021-09-17T04:25:07.803Z
     "deleted": {
         type: Boolean,
         default: false
