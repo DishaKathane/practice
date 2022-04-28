@@ -5,33 +5,42 @@ const authorSchema = new mongoose.Schema({
 
     "firstName": {
         type: String,
-        required: true
+        required: [true, "firstName is required" ],
+        trim: true
     },
+
     "lastName": {
         type: String,
-        required: true
+        required: [true, "lastName is required"],
+        trim: true
     },
+
     "title": {
         type: String,
-        required: true,
-
-        enum: ["Mr", "Mrs", "Miss"]
+        required: [true, "title is required"],
+        enum: ["Mr", "Mrs", "Miss"],
+        trim: true
     },
+
     "email": {
         type: String,
-        validate:{
-            validator: function(v) {
+        // validate1:[isValidEmail,"enter valid email"]
+        validate: {
+            validator: function (v) {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
             },
             message: "Please enter a valid email"
         },
-
-        required: true,
-        unique: true
+        required: true, 
+        unique: true,
+        lowercase : true,
+        trim: true
     },
+
     "password": {
         type: String,
-        required: true
+        required: [true,"password is required"],
+        trim: true
     }
 
 }, { timestamps: true })
